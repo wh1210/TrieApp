@@ -1,21 +1,21 @@
-package src;
+package src.ArrayTrie;
 
-public class TrieNode{
+public class ArrayTrieNode{
     protected String word;
     protected boolean isWord;
-    protected TrieNode[] children;
+    protected ArrayTrieNode[] children;
     // // By default, we are using 26 lower case letters, so the size is 26.
     // public final int size = 26;
     // The whole size of ASCII table is 256.
     public final int size = 256;
 
-    public TrieNode(String word) {
+    public ArrayTrieNode(String word) {
         this.word = word;
-        this.children = new TrieNode[size];
+        this.children = new ArrayTrieNode[size];
     }
 
-    public TrieNode() {
-        this.children = new TrieNode[size];
+    public ArrayTrieNode() {
+        this.children = new ArrayTrieNode[size];
     }
 
     public String getWord() {
@@ -34,20 +34,20 @@ public class TrieNode{
         this.isWord = isWord;
     }
 
-    public TrieNode[] getChildren() {
+    public ArrayTrieNode[] getChildren() {
         return children;
     }
 
-    public void setChildren(TrieNode[] children) {
+    public void setChildren(ArrayTrieNode[] children) {
         this.children = children;
     }
 
-    public TrieNode getChildrenAtIndex(int index) {
+    public ArrayTrieNode getChildrenAtIndex(int index) {
         return this.children[index];
     }
 
     public void setChildrenAtIndex(int index) {
-        this.children[index] = new TrieNode();
+        this.children[index] = new ArrayTrieNode();
     }
 
     public void deleteChildrenAtIndex(int index) {
@@ -55,7 +55,7 @@ public class TrieNode{
     }
 
     public boolean isLeaf() {
-        for (TrieNode node : this.children) {
+        for (ArrayTrieNode node : this.children) {
             if (node != null) return false;
         }
         return true;

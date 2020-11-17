@@ -1,37 +1,37 @@
-package src.test;
+package test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import src.Trie;
-import src.TrieNode;
+import src.MapTrie.MapTrie;
+import src.MapTrie.MapTrieNode;
 
-public class TrieTest {
-    public Trie trie;
+public class MapTrieTest {
+    public MapTrie trie;
 
     @Test
     public void testInsert() {
-        this.trie = new Trie();
+        this.trie = new MapTrie();
         this.trie.insert("hello");
-        TrieNode curr = this.trie.root;
-        assertNotNull(curr.getChildrenAtIndex('h'));
-        assertNull(curr.getChildrenAtIndex('s'));
-        curr = curr.getChildrenAtIndex('h');
-        assertNotNull(curr.getChildrenAtIndex('e'));
-        curr = curr.getChildrenAtIndex('e');
-        assertNotNull(curr.getChildrenAtIndex('l'));
-        curr = curr.getChildrenAtIndex('l');
-        assertNotNull(curr.getChildrenAtIndex('l'));
-        curr = curr.getChildrenAtIndex('l');
-        assertNotNull(curr.getChildrenAtIndex('o'));
-        curr = curr.getChildrenAtIndex('o');
+        MapTrieNode curr = this.trie.root;
+        assertNotNull(curr.getChildren().get('h'));
+        assertNull(curr.getChildren().get('s'));
+        curr = curr.getChildren().get('h');
+        assertNotNull(curr.getChildren().get('e'));
+        curr = curr.getChildren().get('e');
+        assertNotNull(curr.getChildren().get('l'));
+        curr = curr.getChildren().get('l');
+        assertNotNull(curr.getChildren().get('l'));
+        curr = curr.getChildren().get('l');
+        assertNotNull(curr.getChildren().get('o'));
+        curr = curr.getChildren().get('o');
         assertTrue(curr.isWord());
     }
 
     @Test
     public void testSearch() {
-        this.trie = new Trie();
+        this.trie = new MapTrie();
         this.trie.insert("hello");
         this.trie.insert("he");
         this.trie.insert("she");
@@ -46,7 +46,7 @@ public class TrieTest {
 
     @Test
     public void testPrefixWith() {
-        this.trie = new Trie();
+        this.trie = new MapTrie();
         this.trie.insert("hello");
         this.trie.insert("he");
         this.trie.insert("she");
@@ -61,7 +61,7 @@ public class TrieTest {
 
     @Test
     public void testDelete() {
-        this.trie = new Trie();
+        this.trie = new MapTrie();
         this.trie.insert("he");
         this.trie.insert("hello");
         this.trie.insert("she");
