@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import src.ArrayTrie.ArrayTrie;
+import src.ArrayTrieSize26.ArrayTrieSize26;
 import src.MapTrie.MapTrie;
 
 public class TrieComparison {
@@ -15,15 +16,19 @@ public class TrieComparison {
         System.out.println("The words dictionary size is: " + words.size());
         ArrayTrie arrayTrie = new ArrayTrie();
         MapTrie mapTrie = new MapTrie();
+        ArrayTrieSize26 arrayTrieSize26 = new ArrayTrieSize26();
 
         System.out.println("The time for arrayTrie to add all words is: " + arrayTrieInsertTime(arrayTrie, words));
         System.out.println("The time for mapTrie to add all words is: " + mapTrieInsertTime(mapTrie, words));
+        System.out.println("The time for arrayTrieSize26 to add all words is: " + arrayTrieSize26InsertTime(arrayTrieSize26, words));
 
         System.out.println("The time for arrayTrie to search ten words is: " + arrayTrieSearchTime(arrayTrie));
         System.out.println("The time for mapTrie to search ten words is: " + mapTrieSearchTime(mapTrie));
+        System.out.println("The time for arrayTrieSize26 to search ten words is: " + arrayTrieSize26SearchTime(arrayTrieSize26));
 
         System.out.println("The time for arrayTrie to delete ten words is: " + arrayTrieDeleteTime(arrayTrie));
         System.out.println("The time for mapTrie to delete ten words is: " + mapTrieDeleteTime(mapTrie));
+        System.out.println("The time for arrayTrieSize26 to delete ten words is: " + arrayTrieSize26DeleteTime(arrayTrieSize26));
     }
 
     public static List<String> readWords() {
@@ -60,6 +65,18 @@ public class TrieComparison {
 
         for (String word : words) {
             mapTrie.insert(word);
+        }
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+        return duration;
+    }
+
+    public static long arrayTrieSize26InsertTime(ArrayTrieSize26 arrayTrieSize26, List<String> words) {
+        long startTime = System.nanoTime();
+
+        for (String word : words) {
+            arrayTrieSize26.insert(word);
         }
 
         long endTime = System.nanoTime();
@@ -105,6 +122,25 @@ public class TrieComparison {
         return duration;
     }
 
+    public static long arrayTrieSize26SearchTime(ArrayTrieSize26 arrayTrieSize26) {
+        long startTime = System.nanoTime();
+
+        arrayTrieSize26.search("hello");
+        arrayTrieSize26.search("zooidiophilous");
+        arrayTrieSize26.search("wrappering");
+        arrayTrieSize26.search("vicegerentship");
+        arrayTrieSize26.search("scalenohedrons");
+        arrayTrieSize26.search("paramagnetically");
+        arrayTrieSize26.search("leguminiform");
+        arrayTrieSize26.search("defunctionalization");
+        arrayTrieSize26.search("azotobacterieae");
+        arrayTrieSize26.search("backpedaling");
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+        return duration;
+    }
+
     public static long arrayTrieDeleteTime(ArrayTrie arrayTrie) {
         long startTime = System.nanoTime();
 
@@ -137,6 +173,25 @@ public class TrieComparison {
         mapTrie.delete("defunctionalization");
         mapTrie.delete("azotobacterieae");
         mapTrie.delete("backpedaling");
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+        return duration;
+    }
+
+    public static long arrayTrieSize26DeleteTime(ArrayTrieSize26 arrayTrieSize26) {
+        long startTime = System.nanoTime();
+
+        arrayTrieSize26.delete("hello");
+        arrayTrieSize26.delete("zooidiophilous");
+        arrayTrieSize26.delete("wrappering");
+        arrayTrieSize26.delete("vicegerentship");
+        arrayTrieSize26.delete("scalenohedrons");
+        arrayTrieSize26.delete("paramagnetically");
+        arrayTrieSize26.delete("leguminiform");
+        arrayTrieSize26.delete("defunctionalization");
+        arrayTrieSize26.delete("azotobacterieae");
+        arrayTrieSize26.delete("backpedaling");
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
